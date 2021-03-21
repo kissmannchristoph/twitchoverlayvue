@@ -35,7 +35,9 @@ class manipulateOverlay {
     );
   }
 
-  disableWidget(widgetName) {}
+  disableWidget(widget) {
+      this.visibleWidgets.remove(widget)
+  }
 }
 
 export default new manipulateOverlay();
