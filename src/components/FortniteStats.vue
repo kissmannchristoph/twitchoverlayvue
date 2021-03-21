@@ -1,35 +1,43 @@
 <template>
-  <div ref="draggableContainer" @mousedown="dragMouseDown" :style="_style" class="hello">
-rrrrrr
+  <div
+    ref="draggableContainer"
+    @mousedown="dragMouseDown"
+    :style="fStyle"
+    class="hello"
+  >
+    rrrrrr
   </div>
 </template>
 
 <script>
-     const Client = require('fortnite');
-     import config from "../../config.js"
-import dragMixin from "../mixins/DragMixin.js"
+import Client from "fortnite";
+import config from "../../config.js";
+import dragMixin from "../mixins/DragMixin.js";
 export default {
-  name: 'HelloWorld',
-  mixins:[dragMixin],
+  name: "f",
+  mixins: [dragMixin],
+  data() {
+    return {
+      fStyle: "",
+    };
+  },
   props: {
-    _style: String,
-    msg: String
+    msg: String,
   },
   methods: {
-      setStyle(s) {
+    setStyle(s) {
+      // Create an instance of the client with your API Key
+      const fortnite = new Client(config.fortnite.API_KEY);
 
-// Create an instance of the client with your API Key
-const fortnite = new Client(config.fortnite.API_KEY);
-
-// All methods
-fortnite.user('Boateng9889', 'platform [pc, xbl, psn]').then(console.log);
-fortnite.store().then(console.log);
-fortnite.challenges().then(console.log);
-fortnite.printKills("API-Key", "solo", "pc", "Gisgar3");
-          this._style = s;
-      }
-  }
-}
+      // All methods
+      fortnite.user("Boateng9889", "pc").then(console.log);
+      fortnite.store().then(console.log);
+      fortnite.challenges().then(console.log);
+      //fortnite.printKills("API-Key", "solo", "pc", "Gisgar3");
+      this.fStyle = s;
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -48,8 +56,8 @@ li {
 a {
   color: #42b983;
 }
-.hello{
-z-index:100;
-position:absolute;
+.hello {
+  z-index: 100;
+  position: absolute;
 }
 </style>
