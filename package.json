@@ -1,0 +1,27 @@
+{
+  "name": "hello-world",
+  "version": "0.1.0",
+  "main": "node_modules/@vue/cli-service/bin/vue-cli-service.js serve",
+  "private": true,
+  "scripts": {
+    "setup": "npm i -g @vue/cli-service && npm i -g @vue/cli-plugin-babel --no-bin-links && npm i -g vue-template-compiler && npm i --no-bin-links ",
+    "serve": "node node_modules/@vue/cli-service/bin/vue-cli-service.js serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "^4.5.12",
+    "core-js": "^3.6.5",
+    "fortnite": "^4.3.2",
+    "fortnite-stats-wrapper": "git+https://github.com/Gisgar3/Fortnite-Stats-Wrapper.git",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
