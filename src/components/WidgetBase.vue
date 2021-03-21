@@ -1,54 +1,86 @@
 <template>
   <div class="base">
-   <widget-ui></widgetUI>
-   <div v-for="widget in getVisible()">
-    <component v-bind:class="{'selectedWidget':selectedWidget == widget}" v-bind:is="widget.component" @click="clickWidget"/>
-    <widget-box v-show="selectedWidget == widget" :widget="widget.component" @removeClick="removeClick(widget)" visible="true" ></widget-box>
-  </div>
+    <div @click="t">asd</div>
+    <div v-for="(widget, key) in vis" v-bind:key="key">
+      <keep-alive>
+        <component
+          v-bind="{ move: move }"
+          v-bind:is="widget.component"
+          @click="clickWidget(widget)"
+        />
+      </keep-alive>
+      <keep-alive>
+        <widget-box
+          v-show="true"
+          :widget="widget.component"
+          @removeClick="removeClick(widget)"
+          visible="true"
+        ></widget-box
+      ></keep-alive>
+    </div>
   </div>
 </template>
 
 <script>
 import FortniteStats from "./FortniteStats.vue";
-import widgetUI from "./widgetUI.vue"
-import widgetBox from "./widgetBox.vue"
+import widgetUI from "./WidgetUI.vue";
+import widgetBox from "./widgetBox.vue";
 import manipulator from "../scripts.js/overlay.js";
 export default {
   name: "HelloWorld",
-  components: {widgetBox: widgetBox,widgetUI:widgetUI, FortniteStats: FortniteStats },
+  components: {
+    "widget-box": widgetBox,
+    "widget-ui": widgetUI,
+    FortniteStats: FortniteStats,
+  },
+  computed: {
+    vis() {
+      return this.visible;
+    },
+  },
   props: {
     _style: String,
     msg: String,
   },
-  data(){
-      return {
-          selectedWidget: null
-      }
+  data() {
+    return {
+      selectedWidget: null,
+      visible: [],
+    };
   },
   methods: {
-      clickWidget(widget) {
-          this.selectedWidget = widget
-      },
+    move() {
+      widgetBox.updatePosition();
+    },
+    clickWidget(widget) {
+      this.selectedWidget = widget;
+    },
     getVisible() {
       return manipulator.getVisible();
     },
     getList() {
       return this.components;
     },
-    removeClick(widget){
-       manipulator.disableWidget(widget)
-    }
+    removeClick(widget) {
+      manipulator.disableWidget(widget);
+    },
+    t() {
+      manipulator.enableW(FortniteStats);
+      manipulator.getVisible((visible) => {
+        this.visible = visible;
+      });
+    },
   },
-  onUpdate() {
-      widgetBox.updatePosition()
-  }
+  mounted() {},
+  update() {
+    widgetBox.updatePosition();
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.selectedWidget{
-    
+.selectedWidget {
 }
 h3 {
   margin: 40px 0 0;

@@ -4,6 +4,7 @@
     @mousedown="dragMouseDown"
     :style="fStyle"
     class="hello"
+    @click="move"
   >
     rrrrrr
   </div>
@@ -22,6 +23,7 @@ export default {
     };
   },
   props: {
+    move: Function,
     msg: String,
   },
   methods: {

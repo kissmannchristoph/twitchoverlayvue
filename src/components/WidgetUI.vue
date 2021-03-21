@@ -2,21 +2,21 @@
   <div>
     <div class="toggle">toggle</div>
     <div class="widget_list">
-      <div class="widget_item" @click="widgetClick">widget<
-/div>    </div>
+      <div class="widget_item" @click="widgetClick">widget</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  methods: {  
-  widgetClick(name) {
-      
+  name: "HelloWorld",
+  props: {
+    manipulator: Object,
   },
-    
-  }
-}
+  methods: {
+    widgetClick(name) {},
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -35,22 +35,21 @@ li {
 a {
   color: #42b983;
 }
-.toggle{
-    
+.toggle {
 }
 
-.widget_list{
-    position: absolute;
-    width: 80px;
-    display: flex;
-    flex-flow: row;
+.widget_list {
+  position: absolute;
+  width: 80px;
+  display: flex;
+  flex-flow: row;
 }
 
 .widget_item {
- height: 60px;
- width: 60px;  
-   margin: 0 auto;
-   
-   margin-bottom:10px;
+  height: 60px;
+  width: 60px;
+  margin: 0 auto;
+
+  margin-bottom: 10px;
 }
 </style>

@@ -11,8 +11,8 @@ class manipulateOverlay {
     this.visibleWidgets = [];
   }
 
-  getVisible() {
-    return this.visibleWidgets;
+  getVisible(func) {
+    func(this.visibleWidgets);
   }
 
   styleArrayToString(arr) {
@@ -29,6 +29,10 @@ class manipulateOverlay {
     c.setStyle(this.styleArrayToString(style));
   }
 
+  enableW(component) {
+    this.visibleWidgets.push(new Widget(component, component, ""));
+    console.log(this.visibleWidgets);
+  }
   enableWidget(widgetIndex, components) {
     this.visibleWidgets.push(
       new Widget(components[widgetIndex].name, components[widgetIndex], "")
@@ -36,7 +40,7 @@ class manipulateOverlay {
   }
 
   disableWidget(widget) {
-      this.visibleWidgets.remove(widget)
+    this.visibleWidgets.remove(widget);
   }
 }
 
