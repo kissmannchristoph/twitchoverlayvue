@@ -15,8 +15,13 @@
     "core-js": "^3.6.5",
     "fortnite": "^4.3.2",
     "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {},
-  "browserslist": ["> 1%", "last 2 versions", "not dead"]
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

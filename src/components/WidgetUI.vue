@@ -10,9 +10,11 @@
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    manipulator: Object,
-  },
+  computed: {
+      manipulator() {
+          return this.$store.getters.manipulator
+      }
+  }
   methods: {
     widgetClick(name) {},
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="base">
     <div @click="t">asd</div>
-    <div v-for="(widget, key) in vis" v-bind:key="key">
+    <div v-for="(widget, key) in visibleWidgets" v-bind:key="key">
       <keep-alive>
         <component
           v-bind="{ move: move }"
@@ -25,7 +25,6 @@
 import FortniteStats from "./FortniteStats.vue";
 import widgetUI from "./WidgetUI.vue";
 import widgetBox from "./widgetBox.vue";
-import manipulator from "../scripts.js/overlay.js";
 export default {
   name: "HelloWorld",
   components: {
@@ -34,9 +33,12 @@ export default {
     FortniteStats: FortniteStats,
   },
   computed: {
-    vis() {
-      return this.visible;
+    visibleWidgets() {
+      return this.$store.getters.visibleWidgets;
     },
+    manipulator() {
+        return this.$store.manipulator
+    }
   },
   props: {
     _style: String,
@@ -55,18 +57,15 @@ export default {
     clickWidget(widget) {
       this.selectedWidget = widget;
     },
-    getVisible() {
-      return manipulator.getVisible();
-    },
     getList() {
       return this.components;
     },
     removeClick(widget) {
-      manipulator.disableWidget(widget);
+      this.manipulator.disableWidget(widget);
     },
     t() {
-      manipulator.enableW(FortniteStats);
-      manipulator.getVisible((visible) => {
+     this. manipulator.enableW(FortniteStats);
+     this. manipulator.getVisible((visible) => {
         this.visible = visible;
       });
     },

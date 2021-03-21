@@ -1,21 +1,20 @@
 <template>
   <div id="app">
     <img @click="add" alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld ref="helloworld" msg="Welcome to Your Vue.js App" />
-  </div>
+     </div>
 </template>
 
 <script>
-import HelloWorld from "./components/WidgetBase.vue";
-import overlay from "./scripts.js/overlay.js";
+//import h from "./components/WidgetBase.vue";
+//import overlay from "./scripts.js/overlay.js";
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-  },
+ // components: {
+//    h,
+//  },
   methods: {
     add() {
-      overlay.addComponent(this.$refs.helloworld);
+      //overlay.addComponent(this.$refs.helloworld);
     },
   },
 };

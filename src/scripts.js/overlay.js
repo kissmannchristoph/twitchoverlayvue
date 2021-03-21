@@ -1,4 +1,4 @@
-class Widget {
+export default class Widget {
   constructor(name, component, style) {
     this.name = name;
     this.component = component;
@@ -44,4 +44,3 @@ class manipulateOverlay {
   }
 }
 
-export default new manipulateOverlay();
